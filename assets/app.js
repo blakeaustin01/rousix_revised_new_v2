@@ -388,7 +388,7 @@ function openPayment(type) {
   const link = PAYMENT_LINKS[type];
 
   if (!link || link.includes("REPLACE_WITH")) {
-    alert("This button will be activated in a future release.");
+    alert("Add your hosted payment link in assets/app.js before using this button on the live site.");
     return;
   }
 
