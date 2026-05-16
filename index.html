@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rousix Surplus Pathway Planner</title>
+  <meta name="description" content="A 36-month educational planning demo for visualizing starting contribution, monthly contribution, surplus pathway, and ownership goals." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Rousix Planner home">
+      <span class="brand-mark">R</span>
+      <span>
+        <strong>Rousix Pathway Planner</strong>
+        <small>Contribution → Surplus → Ownership</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#home">Overview</a>
+      <a href="#planner">Start Planning</a>
+      <a href="#roadmap">View Roadmap</a>
+      <a href="#learn">Understand</a>
+      <a href="#start">Get Started</a>
+    </nav>
+  </header>
+
+  <main>
+    <aside class="important-banner" role="note">
+      <strong>Important:</strong> This is an educational planning demo. It is not financial advice, not a contract, and not a promise of profit, payout, timeline, approval, or ownership.
+    </aside>
+
+    <section id="home" class="view active" data-route="home">
+      <div class="hero shell">
+        <div class="hero-copy">
+          <p class="eyebrow">Interactive marketing prototype</p>
+          <h1>Turn a big ownership goal into a simple visual pathway.</h1>
+          <p class="lead">Enter a goal like a car, vehicle, truck, home, equipment, or workstation. The planner turns it into a plain-English roadmap using one fixed 36-month structure and one simple 5x planning model.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#planner">Start Planning</a>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="Sample planning flow">
+          <div class="flow-line">
+            <span>Goal</span><i></i><span>Plan</span><i></i><span>Roadmap</span><i></i><span>Start</span>
+          </div>
+          <div class="mini-dashboard">
+            <div><small>Fixed timeline</small><strong>36 months</strong></div>
+            <div><small>Planning model</small><strong>5x structure</strong></div>
+            <div><small>Minimum start</small><strong>$5+</strong></div>
+            <div><small>Monthly minimum</small><strong>$1+</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shell split-grid">
+        <article class="card">
+          <h2>What this prototype does</h2>
+          <p>It makes a complicated idea easy to see: pick a goal, enter the price, choose the contribution balance, review the suggested starting and monthly amounts, and prepare the next step.</p>
+          <ul class="check-list">
+            <li>Live roadmap changes as numbers change.</li>
+            <li>The contribution balance now updates the starting and monthly fields automatically.</li>
+            <li>The visible form stays simple: no multiplier menu and no infrastructure preference menu.</li>
+            <li>Copy and print buttons work for marketing conversations.</li>
+          </ul>
+        </article>
+
+        <article class="card accent-card">
+          <h2>Plain explanation</h2>
+          <p><strong>Surplus-based planning</strong> means the person is not just asking, “Can I borrow money?” They are asking, “What inputted amount path could support this ownership goal, and what is still missing?”</p>
+          <p>The app keeps that message simple: goal, price, preferred balance, starting contribution, monthly contribution, fixed 36-month timeline, suggested infrastructure discussion, roadmap, and next step.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="planner" class="view" data-route="planner">
+      <div class="shell page-heading">
+        <p class="eyebrow">Step 1</p>
+        <h1>Build a sample roadmap</h1>
+        <p>Keep it simple. The person enters a goal, chooses whether they prefer more upfront or more monthly, and the app fills in a realistic sample path.</p>
+      </div>
+
+      <div class="shell planner-grid">
+        <form id="plannerForm" class="card form-card">
+          <div class="form-section">
+            <h2>Individual goal</h2>
+            <label>
+              Person or project name
+              <input id="personName" type="text" placeholder="Example: Jordan's home plan" />
+            </label>
+            <label>
+              Goal type
+              <select id="goalType">
+                <option>Car</option>
+                <option>Vehicle</option>
+                <option>Truck</option>
+                <option selected>Home</option>
+                <option>Business Equipment</option>
+                <option>Workstation</option>
+                <option>Education</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label>
+              Price
+              <input id="targetPrice" type="number" min="100" step="100" value="300000" />
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h2>Inputs</h2>
+            <label>
+              Preferred contribution balance
+              <select id="contributionStyle">
+                <option value="lessUpfront" selected>Less money upfront and more monthly payments</option>
+                <option value="moreUpfront">More money upfront and less monthly payments</option>
+              </select>
+              <small id="balanceHint">Changing this selection automatically updates the starting and monthly contribution fields.</small>
+            </label>
+            <label>
+              Starting contribution
+              <input id="startingContribution" type="number" min="5" step="1" value="5000" />
+              <small id="startHint">Minimum starts at $5. A realistic start may be higher for larger goals.</small>
+            </label>
+            <label>
+              Monthly contribution
+              <input id="monthlyContribution" type="number" min="1" step="1" value="1236" />
+              <small id="monthlyHint">Minimum recurring amount is $1. The planner will show if the amount is too low for the selected goal.</small>
+            </label>
+            <div class="static-field" role="note" aria-label="Fixed planning timeline">
+              <span>Planning timeline</span>
+              <strong>36 months</strong>
+              <small>This is fixed for the planner and is no longer a selectable option.</small>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Planning structure</h2>
+            <div class="assumption-grid">
+              <div>
+                <span>Timeline</span>
+                <strong>36 months</strong>
+              </div>
+              <div>
+                <span>Planning model</span>
+                <strong>5x structure</strong>
+              </div>
+              <div>
+                <span>Language</span>
+                <strong>Inputted amount</strong>
+              </div>
+            </div>
+            <p class="form-note">The planner uses one fixed educational structure. For a $1,000,000 goal, the balance selector can show either about $75,000 upfront plus $2,500 per month, or about $12,450 upfront plus $4,237 per month.</p>
+          </div>
+
+          <div class="disclaimer-check">
+            <input id="acknowledge" type="checkbox" checked />
+            <label for="acknowledge">I understand this is an educational planning demo and not a promise of profit, payout, timeline, approval, or ownership.</label>
+          </div>
+
+          <button class="button primary full" type="submit">Build Roadmap</button>
+        </form>
+
+        <aside class="card result-card" aria-live="polite">
+          <p class="eyebrow">Live preview</p>
+          <h2 id="previewTitle">Sample home roadmap</h2>
+          <div class="metric-stack">
+            <div class="metric"><span>Contribution style</span><strong id="previewStyle">Less upfront</strong></div>
+            <div class="metric"><span>Starting amount</span><strong id="previewStart">$5,000</strong></div>
+            <div class="metric"><span>Monthly amount</span><strong id="previewMonthly">$1,236</strong></div>
+            <div class="metric"><span>36-month input target</span><strong id="previewBase">$49,500</strong></div>
+            <div class="metric"><span>Suggested infrastructure</span><strong id="previewTier">Standard</strong></div>
+            <div class="metric"><span>Path status</span><strong id="previewStatus">Needs review</strong></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Sample pathway coverage</span><strong id="progressText">0%</strong></div>
+            <div class="progress"><span id="progressBar"></span></div>
+          </div>
+          <p id="previewSummary" class="plain-summary">Build the roadmap to see a plain-English explanation.</p>
+          <div class="button-row">
+            <button id="copySummary" class="button soft" type="button">Copy Summary</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="roadmap" class="view" data-route="roadmap">
+      <div class="shell page-heading">
+        <p class="eyebrow">Step 2</p>
+        <h1>36-month strategic plan roadmap</h1>
+        <p>The roadmap stays vertical and easy to read: what the person chose, what Rousix may help clarify, what still needs review, and how to get started.</p>
+      </div>
+
+      <div id="emptyRoadmap" class="shell card empty-state">
+        <h2>No roadmap yet</h2>
+        <p>Start with the planning form. Once you build a roadmap, this page will fill in automatically.</p>
+        <a class="button primary" href="#planner">Start Planning</a>
+      </div>
+
+      <div id="roadmapContent" class="shell roadmap-content hidden">
+        <div class="snapshot-grid">
+          <div class="card snapshot"><span>Goal</span><strong id="roadGoal">Home</strong></div>
+          <div class="card snapshot"><span>Price</span><strong id="roadPrice">$300,000</strong></div>
+          <div class="card snapshot"><span>Timeline</span><strong id="roadTimeline">36 months</strong></div>
+          <div class="card snapshot"><span>Starting amount</span><strong id="roadStart">$5,000</strong></div>
+          <div class="card snapshot"><span>Monthly amount</span><strong id="roadMonthly">$1,236</strong></div>
+          <div class="card snapshot"><span>Suggested infrastructure</span><strong id="roadTier">Standard</strong></div>
+        </div>
+
+        <article class="card summary-card">
+          <div>
+            <p class="eyebrow">Plain-English summary</p>
+            <h2 id="roadTitle">Sample home roadmap</h2>
+          </div>
+          <p id="roadSummary">The roadmap summary will appear here.</p>
+          <div id="roadWarnings" class="warning-list"></div>
+          <div class="button-row">
+            <button id="copyRoadmap" class="button soft" type="button">Copy Summary</button>
+            <button id="printRoadmap" class="button ghost" type="button">Print Roadmap</button>
+          </div>
+        </article>
+
+        <section class="timeline" aria-label="Strategic plan phases">
+          <article class="timeline-card">
+            <span class="step-number">1</span>
+            <div>
+              <h3>Understand the tool</h3>
+              <p>Confirm the person understands this is a planning tool. It helps them see a possible path; it does not guarantee a result.</p>
+            </div>
+          </article>
+          <article class="timeline-card">
+            <span class="step-number">2</span>
+            <div>
+              <h3>Start planning</h3>
+              <p id="roadInputs">Enter goal type, price, contribution balance, starting contribution, monthly contribution, and the fixed 36-month timeline.</p>
+            </div>
+          </article>
+          <article class="timeline-card">
+            <span class="step-number">3</span>
+            <div>
+              <h3>Build the 5x roadmap</h3>
+              <p id="roadGapExplanation">Review what the inputted amount path covers and what still needs attention.</p>
+            </div>
+          </article>
+          <article class="timeline-card">
+            <span class="step-number">4</span>
+            <div>
+              <h3>Review suggested infrastructure</h3>
+              <p id="roadTierExplanation">The suggested tier is for discussion. The visitor does not select infrastructure preference inside the form.</p>
+            </div>
+          </article>
+          <article class="timeline-card">
+            <span class="step-number">5</span>
+            <div>
+              <h3>Prepare next steps</h3>
+              <p>Start small, learn the process, review the roadmap, and then decide whether to increase the plan after trust and comfort improve.</p>
+            </div>
+          </article>
+        </section>
+
+        <article class="card detail-card">
+          <h2>How the 36-month structure is calculated</h2>
+          <p>The planner uses a fixed 36-month path and a simple 5x educational structure. It compares the starting contribution plus 36 monthly contributions against the inputted amount target for the selected goal.</p>
+          <div id="tierMath" class="tier-math"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="learn" class="view" data-route="learn">
+      <div class="shell page-heading">
+        <p class="eyebrow">Step 3</p>
+        <h1>Understand the roadmap</h1>
+        <p>This page is intentionally simple so a busy person can understand the process without reading a wall of text.</p>
+      </div>
+
+      <div class="shell learn-grid">
+        <article class="card learn-card">
+          <span class="learn-icon">01</span>
+          <h2>Clear goal</h2>
+          <p>Choose one goal: car, vehicle, truck, equipment, home, business, workstation, education, or another ownership target.</p>
+        </article>
+        <article class="card learn-card">
+          <span class="learn-icon">02</span>
+          <h2>Fixed pathway</h2>
+          <p>The planner uses 36 months only. There is no 24-month or 30-month selector.</p>
+        </article>
+        <article class="card learn-card">
+          <span class="learn-icon">03</span>
+          <h2>Guided explanation</h2>
+          <p>The summary repeats the numbers in a simple way: what you want, which contribution balance you selected, what you can start with, what you can add monthly, and what needs review.</p>
+        </article>
+        <article class="card learn-card">
+          <span class="learn-icon">04</span>
+          <h2>Careful expectations</h2>
+          <p>Risk is real. Results can vary. The smart path is to start small, build trust, and only increase after you understand the process.</p>
+        </article>
+      </div>
+
+      <div class="shell split-grid">
+        <article class="card">
+          <h2>How Rousix may help</h2>
+          <p>Rousix can help clarify the planning goal, explain the simple onboarding steps, review the suggested infrastructure discussion, and identify what information would be needed before any real next step.</p>
+          <p>Onboarding can be explained like this: enter basic personal credentials, choose the goal, enter the price, choose the balance preference, review the automatic starting and monthly amounts, review the 36-month roadmap, then decide whether to start small or move forward with a larger plan.</p>
+        </article>
+        <article class="card accent-card">
+          <h2>5x planning language</h2>
+          <p>The prototype uses one fixed 5x educational structure instead of showing multiple alternative multiplier structures. The roadmap can still show upside potential while staying clear that no result is promised.</p>
+          <p>The preferred phrase is <strong>inputted amount</strong>. That keeps the conversation focused on planning, contribution, and next-step review.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="start" class="view" data-route="start">
+      <div class="shell page-heading">
+        <p class="eyebrow">Step 4</p>
+        <h1>Get started</h1>
+        <p>This page uses hosted payment links. The website never sees or stores card numbers.</p>
+      </div>
+
+      <div class="shell start-grid">
+        <article class="card">
+          <h2>Simple start path</h2>
+          <ol class="number-list">
+            <li><strong>$1 planning deposit:</strong> confirms interest and collects payment details through a hosted checkout page.</li>
+            <li><strong>$5+ starting contribution:</strong> minimum starting amount. Higher amounts can be used for serious plans.</li>
+            <li><strong>$1+ monthly contribution:</strong> minimum recurring rhythm. Larger monthly plans should be reviewed directly.</li>
+            <li><strong>Roadmap review:</strong> print the plan, review concerns, and decide whether to start small or proceed with a larger plan.</li>
+          </ol>
+          <div class="button-row stacked-mobile">
+            <button class="button primary" type="button" data-pay="deposit">Pay $1 Planning Deposit</button>
+            <button class="button soft" type="button" data-pay="starter">Start $5+ Contribution</button>
+            <button class="button ghost" type="button" data-pay="monthly">Start $1 Monthly</button>
+          </div>
+        </article>
+
+        <article class="card accent-card">
+          <h2>Before someone pays</h2>
+          <p>Make the disclaimer hard to miss. The person should understand that this is a planning conversation, infrastructure and market conditions can change, and results are not guaranteed.</p>
+          <div class="mini-legal">
+            <strong>Required acknowledgment:</strong>
+            <p>“I understand this is a planning demo and that Rousix does not guarantee profits, payouts, ownership approval, or a specific timeline.”</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Rousix Surplus Pathway Planner prototype. Educational use only. No financial guarantees.</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
